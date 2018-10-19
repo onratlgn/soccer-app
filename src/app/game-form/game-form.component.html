@@ -1,0 +1,50 @@
+<mat-list>
+  <h3 mat-subheader>Added Actions</h3>
+  <mat-card class="card">
+  <mat-list-item *ngFor="let game of gameList; index as i" >
+    <h4 mat-line>{{game.deviceid}}</h4>
+    <h4 mat-line>{{game.sensornum}}</h4>
+    <h4 mat-line>{{game.time}}</h4>
+    <button mat-icon-button (click)=cancelStep(i)>
+        <mat-icon>cancel</mat-icon>
+    </button>
+    <mat-divider></mat-divider>
+  </mat-list-item>
+  </mat-card>
+</mat-list>
+
+
+<mat-card class="card">
+  <mat-grid-list cols="7" rowHeight="52px">
+    <mat-grid-tile [colspan]="3">
+      <mat-form-field>
+        <mat-icon matSuffix>memory</mat-icon>
+        <mat-select placeholder="Device" [(value)]="selectedSensor">
+          <mat-optgroup *ngFor="let device of devices" [label]="device.name">
+            <mat-option *ngFor="let sensor of device.sensors" [value]="sensor.sensorid">
+              {{sensor.sensorname}}
+            </mat-option>
+          </mat-optgroup>
+        </mat-select>
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="3">
+      <mat-form-field appearance="standard">
+        <mat-label>Time</mat-label>
+        <input matInput class="input" placeholder="seconds" [(ngModel)]="selectedTime" (onSubmit)="printsel()">
+        <mat-icon matSuffix>query_builder</mat-icon>
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <button mat-icon-button (click)="addStep()">
+        <mat-icon>save</mat-icon>
+      </button>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-card>
+
+<mat-card class="card">
+  <button mat-icon-button (click)="printList()">
+    <mat-icon>play_circle_outline</mat-icon>
+  </button>
+</mat-card>
