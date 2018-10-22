@@ -31,7 +31,7 @@
     <mat-grid-tile [colspan]="3">
       <mat-form-field appearance="standard">
         <mat-label>Time</mat-label>
-        <input matInput class="input" placeholder="seconds" [(ngModel)]="selectedTime" (onSubmit)="printsel()">
+        <input type="number" matInput class="input" placeholder="seconds" [(ngModel)]="selectedTime">
         <mat-icon matSuffix>query_builder</mat-icon>
       </mat-form-field>
     </mat-grid-tile>
@@ -44,7 +44,7 @@
 </mat-card>
 
 <mat-card class="card">
-  <button mat-icon-button (click)="printList()">
+  <button mat-icon-button (click)="playGame()">
     <mat-icon>play_circle_outline</mat-icon>
   </button>
 </mat-card>

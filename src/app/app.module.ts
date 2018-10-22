@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-// Mat Modules
+// Material Modules
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatListModule } from '@angular/material/list';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -12,16 +12,27 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatGridListModule} from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+
+// Firebase Modules
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
-import { GameFormComponent } from './game-form/game-form.component';
+import { GameFormComponent, ScoreBoardComponent} from './game-form/game-form.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    GameFormComponent
+    GameFormComponent,
+    ScoreBoardComponent
+  ],
+  entryComponents: [
+    GameFormComponent,
+    ScoreBoardComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,9 +46,14 @@ import { GameFormComponent } from './game-form/game-form.component';
     MatGridListModule,
     MatCardModule,
     MatButtonModule,
-    MatDividerModule
+    MatDividerModule,
+    MatDialogModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
   ],
-  providers: [],
+  providers: [
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
