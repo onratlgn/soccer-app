@@ -23,6 +23,7 @@
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+.editorconfig
 
 # misc
 /.sass-cache
@@ -37,3 +38,11 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Firebase Files
+.firebaserc
+.firebase.json
+
+# Git Files
+.gitignore
+
